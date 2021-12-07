@@ -242,7 +242,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_Idle
-  m_Speed: 1
+  m_Speed: 0.02
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101000013895049464}
@@ -396,7 +396,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 708, y: -108, z: 0}
-  m_EntryPosition: {x: 12, y: -108, z: 0}
+  m_EntryPosition: {x: 10, y: -110, z: 0}
   m_ExitPosition: {x: 12, y: -168, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110229446}
@@ -437,7 +437,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Death
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102000013728524296}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0

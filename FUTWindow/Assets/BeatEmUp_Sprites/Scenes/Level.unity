@@ -123,6 +123,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &123487790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 194226, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
+  m_PrefabInstance: {fileID: 1545217386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &123487791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123487790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb43164a38e9474782709a19380700a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 123487790}
+  rb: {fileID: 123487792}
+  movementSpeed: 0
+--- !u!50 &123487792
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123487790}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!4 &287726947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013211470430, guid: 1a39502dfbf81bc41a3705a07f89e1ce, type: 3}
@@ -159,7 +200,7 @@ Transform:
   - {fileID: 287726947}
   - {fileID: 1628774829}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352941784
 GameObject:
@@ -191,7 +232,7 @@ Transform:
   - {fileID: 1173861086}
   - {fileID: 1824407745}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &711131534
 PrefabInstance:
@@ -406,7 +447,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1487712559
 GameObject:
@@ -483,7 +524,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468752, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 468752, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
       propertyPath: m_LocalPosition.x
