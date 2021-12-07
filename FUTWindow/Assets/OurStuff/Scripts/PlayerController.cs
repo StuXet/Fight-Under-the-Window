@@ -48,5 +48,10 @@ public class PlayerController : MonoBehaviour
     {
         
     }
+
+    public void punch()
+    {
+        anim.Play("Punch1");
+    }
    
 }
