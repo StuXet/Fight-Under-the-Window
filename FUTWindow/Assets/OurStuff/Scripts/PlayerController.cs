@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckInput();
-        //Animate();
+        Animate();
     }
 
     private void FixedUpdate()
@@ -46,11 +46,19 @@ public class PlayerController : MonoBehaviour
 
     public void Animate()
     {
-        
+        if (hor < 0)
+        {
+            player.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (hor > 0)
+        {
+            player.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     public void punch()
     {
+        anim.Play("Punch2");
         anim.Play("Punch1");
     }
    
