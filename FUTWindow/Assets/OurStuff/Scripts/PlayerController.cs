@@ -59,6 +59,15 @@ public class PlayerController : MonoBehaviour
         anim.Play("Punch2");
         anim.Play("Punch1");
     }
+    public void Defend()
+    {
+        anim.Play("Defend");
+    }
+    public void punch2()
+    {
+        anim.Play("Kick2");
+        anim.Play("Kick1");
+    }
 
     //Animations
     private void Walk()
