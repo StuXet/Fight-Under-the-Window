@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(hor * movementSpeed, ver * movementSpeed);
         }
+        else if (Mathf.Abs(hor) < 0.5f || Mathf.Abs(ver) < 0.5f)
+        {
+            rb.velocity = new Vector2( 0, ver * 0 );
+        }
     }
 
     public void Animate()
@@ -59,11 +63,11 @@ public class PlayerController : MonoBehaviour
     //Animations
     private void Walk()
     {
-        if (hor != 0 || ver != 0 )
+        if (Mathf.Abs(hor) >= 0.5f || Mathf.Abs(ver) >= 0.5f)
         {
             anim.SetBool("IsWalking", true);
         }
-        else if (hor == 0 && ver ==0)
+        else if (Mathf.Abs(hor) < 0.5f || Mathf.Abs(ver) < 0.5f)
         {
             anim.SetBool("IsWalking", false);
         }
