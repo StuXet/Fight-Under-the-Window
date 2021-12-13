@@ -46,6 +46,31 @@ public class PlayerController : MonoBehaviour
 
     public void Animate()
     {
+        FlipX();
+        Walk();
+    }
+
+    public void punch()
+    {
+        anim.Play("Punch2");
+        anim.Play("Punch1");
+    }
+
+    //Animations
+    private void Walk()
+    {
+        if (hor != 0 || ver != 0 )
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else if (hor == 0 && ver ==0)
+        {
+            anim.SetBool("IsWalking", false);
+        }
+    }
+
+    private void FlipX()
+    {
         if (hor < 0)
         {
             player.GetComponent<SpriteRenderer>().flipX = true;
@@ -54,12 +79,6 @@ public class PlayerController : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().flipX = false;
         }
-    }
-
-    public void punch()
-    {
-        anim.Play("Punch2");
-        anim.Play("Punch1");
     }
    
 }
