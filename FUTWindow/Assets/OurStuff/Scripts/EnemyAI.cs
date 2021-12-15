@@ -32,7 +32,9 @@ public class EnemyAI : MonoBehaviour
         else
         {
             StopChasePlayer();
+            animator.SetBool("IsInRange", true);
         }
+        Flip();
     }
 
     private void StopChasePlayer()
@@ -42,6 +44,12 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        animator.SetBool("IsWalking", true);
+    }
+
+    private void Flip()
+    {
         if (transform.position.x < target.transform.position.x)
         {
             sR.flipX = true;
@@ -50,8 +58,5 @@ public class EnemyAI : MonoBehaviour
         {
             sR.flipX = false;
         }
-
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        animator.SetBool("IsWalking", true);
     }
 }
