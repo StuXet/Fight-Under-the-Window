@@ -579,6 +579,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375914801}
   m_CullTransparentMesh: 1
+--- !u!95 &467399780 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9525440, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+  m_PrefabInstance: {fileID: 711131534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &467399781 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 21271574, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+  m_PrefabInstance: {fileID: 711131534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518689420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1891,8 @@ MonoBehaviour:
   chaseDistance: 27.91
   stopDistance: 0.76
   target: {fileID: 1464456912}
+  animator: {fileID: 467399780}
+  sR: {fileID: 467399781}
 --- !u!212 &1993185556
 SpriteRenderer:
   m_ObjectHideFlags: 0

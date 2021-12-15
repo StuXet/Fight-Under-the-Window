@@ -10,11 +10,15 @@ public class EnemyAI : MonoBehaviour
     public GameObject target;
 
     private float targetDistance;
+
+    [SerializeField]
     Animator animator;
+
+    [SerializeField]
+    SpriteRenderer sR; 
 
     void Start()
     {
-        animator = GetComponent<Animator>();
     }
 
 
@@ -40,11 +44,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (transform.position.x < target.transform.position.x)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            sR.flipX = true;
         }
         else
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            sR.flipX = false;
         }
 
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
