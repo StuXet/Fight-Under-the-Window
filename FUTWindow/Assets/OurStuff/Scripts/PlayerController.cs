@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     private float hor;
     private float ver;
     private string dir;
+    public Transform RposAttackPoint;
+    public Transform LposAttackPoint;
+    public Transform attackPoint;
+    Vector3 scale;
 
     // Update is called once per frame
     void Update()
@@ -54,20 +58,20 @@ public class PlayerController : MonoBehaviour
         Walk();
     }
 
-    public void punch()
-    {
-        anim.Play("Punch2");
-        anim.Play("Punch1");
-    }
-    public void Defend()
-    {
-        anim.Play("Defend");
-    }
-    public void punch2()
-    {
-        anim.Play("Kick2");
-        anim.Play("Kick1");
-    }
+    //public void punch()
+    //{
+    //    anim.Play("Punch2");
+    //    anim.Play("Punch1");
+    //}
+    //public void Defend()
+    //{
+    //    anim.Play("Defend");
+    //}
+    //public void punch2()
+    //{
+    //    anim.Play("Kick2");
+    //    anim.Play("Kick1");
+    //}
 
     //Animations
     private void Walk()
@@ -87,10 +91,12 @@ public class PlayerController : MonoBehaviour
         if (hor < 0)
         {
             player.GetComponent<SpriteRenderer>().flipX = true;
+            attackPoint.transform.position = LposAttackPoint.transform.position;
         }
         else if (hor > 0)
         {
             player.GetComponent<SpriteRenderer>().flipX = false;
+            attackPoint.transform.position = RposAttackPoint.transform.position;
         }
     }
    
