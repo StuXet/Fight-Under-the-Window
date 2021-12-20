@@ -1364,7 +1364,7 @@ MonoBehaviour:
   anim: {fileID: 123487791}
   rb: {fileID: 1464456914}
   joystick: {fileID: 1484912897}
-  movementSpeed: 5
+  movementSpeed: 4
   RposAttackPoint: {fileID: 384435230}
   LposAttackPoint: {fileID: 1371034352}
   attackPoint: {fileID: 1740210653}
@@ -1387,6 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
+  attackDamage: 15
   attackRange: 0.24
   enemyLayers:
     serializedVersion: 2
@@ -2230,6 +2231,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5597682, y: 0.4908991}
   m_EdgeRadius: 0
+--- !u!114 &1993185558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993185553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ea6b84213a6d54fbb2dce92fe269cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  attackRange: 0.5
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 128612871}
+  animator: {fileID: 467399780}
 --- !u!1001 &2001002870
 PrefabInstance:
   m_ObjectHideFlags: 0
