@@ -9,21 +9,22 @@ public class EnemyCombat : MonoBehaviour
     int currentHP; 
     public Animator animator;
     public Transform attackPoint;
-    public int attackDamage = 15;
+    public int attackDamage;
     public float attackRange = .5f;
     public LayerMask playerLayers;
-
+    public GameObject player;
  
 
     public void Attack()
     {
-        animator.SetBool("Punch", true);
-        animator.Play("EnemyPunch4");
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-        foreach (var player in hitPlayer)
+        if (animator.GetBool("IsInRange"))
         {
-            player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
-            Debug.Log("hit " + player.name);
+            animator.SetBool("Punch", true);
+            animator.Play("EnemyPunch4");
+            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+            
+                player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
+                Debug.Log("hit " + player.name);
         }
     }
     private void OnDrawGizmosSelected()
@@ -37,6 +38,7 @@ public class EnemyCombat : MonoBehaviour
     {
         currentHP = maxHP;
     }
+
     public void TakeDamage(int Damage)
     {
         currentHP -= Damage;

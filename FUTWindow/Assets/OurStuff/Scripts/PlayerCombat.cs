@@ -35,11 +35,6 @@ public class PlayerCombat : MonoBehaviour
     {
         currentHP = maxHP;
     }
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int Damage)
     {
         currentHP -= Damage;

@@ -8,6 +8,11 @@ public class EnemyAI : MonoBehaviour
     public float chaseDistance;
     public float stopDistance;
     public GameObject target;
+    public GameObject enemy;
+    private float hor;
+    public Transform RposAttackPoint;
+    public Transform LposAttackPoint;
+    public Transform attackPoint;
 
     private float targetDistance;
 
@@ -34,6 +39,7 @@ public class EnemyAI : MonoBehaviour
             StopChasePlayer();
             animator.SetBool("IsInRange", true);
         }
+
         Flip();
     }
 
@@ -53,34 +59,14 @@ public class EnemyAI : MonoBehaviour
         if (transform.position.x < target.transform.position.x)
         {
             sR.flipX = true;
+            enemy.GetComponent<SpriteRenderer>().flipX = true;
+            attackPoint.transform.position = LposAttackPoint.transform.position;
         }
         else
         {
             sR.flipX = false;
+            enemy.GetComponent<SpriteRenderer>().flipX = false;
+            attackPoint.transform.position = RposAttackPoint.transform.position;
         }
     }
-
-
-
-    //public Transform attackPoint;
-    //public float attackRange = .5f;
-    //public LayerMask playerLayers;
-
-    //public void Attack()
-    //{
-    //    animator.SetBool("Punch", true);
-    //    animator.Play("EnemyPunch4");
-    //    Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-    //    foreach (var player in hitPlayer)
-    //    {
-    //        Debug.Log("hit " + player.name);
-    //    }
-    //}
-
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (attackPoint == null)
-    //        return;
-    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    //}
 }
