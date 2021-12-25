@@ -62,25 +62,25 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    public Transform attackPoint;
-    public float attackRange = .5f;
-    public LayerMask playerLayers;
+    //public Transform attackPoint;
+    //public float attackRange = .5f;
+    //public LayerMask playerLayers;
 
-    public void Attack()
-    {
-        animator.SetBool("Punch", true);
-        animator.Play("EnemyPunch4");
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-        foreach (var player in hitPlayer)
-        {
-            Debug.Log("hit " + player.name);
-        }
-    }
+    //public void Attack()
+    //{
+    //    animator.SetBool("Punch", true);
+    //    animator.Play("EnemyPunch4");
+    //    Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+    //    foreach (var player in hitPlayer)
+    //    {
+    //        Debug.Log("hit " + player.name);
+    //    }
+    //}
 
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (attackPoint == null)
+    //        return;
+    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    //}
 }
