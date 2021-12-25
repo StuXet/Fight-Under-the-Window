@@ -290,12 +290,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128612870}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.469, y: 1.691, z: 0}
+  m_LocalPosition: {x: 1.469, y: 1.771, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1993185554}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &199651291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 194592, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+  m_PrefabInstance: {fileID: 711131534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &287726947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013211470430, guid: 1a39502dfbf81bc41a3705a07f89e1ce, type: 3}
@@ -1325,7 +1330,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49079514, y: 0.4501722}
+  m_Size: {x: 0.57, y: 0.4501722}
   m_EdgeRadius: 0
 --- !u!50 &1464456914
 Rigidbody2D:
@@ -1385,6 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1507aa1d64078245920025dd1d51d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 20
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
   attackDamage: 15
@@ -2147,13 +2153,12 @@ MonoBehaviour:
   chaseDistance: 27.91
   stopDistance: 1.5
   target: {fileID: 1464456912}
+  enemy: {fileID: 199651291}
+  RposAttackPoint: {fileID: 423403437}
+  LposAttackPoint: {fileID: 908613783}
+  attackPoint: {fileID: 128612871}
   animator: {fileID: 467399780}
   sR: {fileID: 467399781}
-  attackPoint: {fileID: 128612871}
-  attackRange: 0.24
-  playerLayers:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!212 &1993185556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2243,13 +2248,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ea6b84213a6d54fbb2dce92fe269cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  attackRange: 0.5
+  maxHP: 2
+  animator: {fileID: 467399780}
+  attackPoint: {fileID: 128612871}
+  attackDamage: 0
+  attackRange: 0.24
   playerLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackPoint: {fileID: 128612871}
-  animator: {fileID: 467399780}
+  player: {fileID: 1464456912}
 --- !u!1001 &2001002870
 PrefabInstance:
   m_ObjectHideFlags: 0

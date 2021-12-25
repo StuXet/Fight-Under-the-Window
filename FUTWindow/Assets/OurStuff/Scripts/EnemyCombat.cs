@@ -38,6 +38,10 @@ public class EnemyCombat : MonoBehaviour
     {
         currentHP = maxHP;
     }
+    private void Update()
+    {
+        Attack();
+    }
 
     public void TakeDamage(int Damage)
     {
