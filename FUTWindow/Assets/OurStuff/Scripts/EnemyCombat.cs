@@ -37,10 +37,11 @@ public class EnemyCombat : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        StartCoroutine("Cooldown");
     }
     private void Update()
     {
-        Attack();
+
     }
 
     public void TakeDamage(int Damage)
@@ -60,5 +61,11 @@ public class EnemyCombat : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EnemyAI>().enabled = false;
         this.enabled = false;
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(1);
+        Attack();
     }
 }
