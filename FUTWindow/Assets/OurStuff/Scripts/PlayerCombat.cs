@@ -11,6 +11,9 @@ public class PlayerCombat : MonoBehaviour
     public int attackDamage = 15;
     public float attackRange = .5f;
     public LayerMask enemyLayers;
+    public Transform grabDetect;
+    public Transform boxHolder;
+    public float rayDist;
 
 
     public void Attack()
@@ -23,6 +26,17 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<EnemyCombat>().TakeDamage(attackDamage);
             Debug.Log("HIT " + enemy.name);
         }
+    }
+    public void PickUpFunc()
+    {
+        RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
+        grabCheck.collider.gameObject.transform.parent = boxHolder;
+        grabCheck.collider.gameObject.transform.position = boxHolder.position;
+        attackDamage += 10;
+        Debug.Log("Picked Up! +10 Damage!");
+        /* Drop */
+        //grabCheck.collider.gameObject.transform.parent = null;
+
     }
 
     private void OnDrawGizmosSelected()
