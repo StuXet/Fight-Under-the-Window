@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &10813371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -301,6 +301,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 194592, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
   m_PrefabInstance: {fileID: 711131534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &199651292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199651291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0efca039e592741a5cae90ecf6603c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 467399780}
 --- !u!4 &287726947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013211470430, guid: 1a39502dfbf81bc41a3705a07f89e1ce, type: 3}
@@ -2243,8 +2256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e8d3ef410745a41849bad3447eefe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  chaseDistance: 27.91
+  speed: 3
+  chaseDistance: 28
   stopDistance: 1.5
   target: {fileID: 1464456912}
   enemy: {fileID: 199651291}
@@ -2342,15 +2355,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ea6b84213a6d54fbb2dce92fe269cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 2
-  animator: {fileID: 467399780}
-  attackPoint: {fileID: 128612871}
-  attackDamage: 0
-  attackRange: 0.24
   playerLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  attackPoint: {fileID: 128612871}
+  animator: {fileID: 467399780}
   player: {fileID: 1464456912}
+  attackRange: 0.5
+  attackDamage: 0
+  maxHP: 60
 --- !u!1001 &2001002870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2529,7 +2542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2104025434
 RectTransform:
   m_ObjectHideFlags: 0

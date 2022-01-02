@@ -161,8 +161,8 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.16666667
-    functionName: Check4Hit
+  - time: 0.38333333
+    functionName: SetPunchFalse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

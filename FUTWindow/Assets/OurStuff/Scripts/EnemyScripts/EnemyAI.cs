@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     Animator animator;
 
     [SerializeField]
-    SpriteRenderer sR; 
+    SpriteRenderer sR;
 
     void Start()
     {
