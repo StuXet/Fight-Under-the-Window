@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   attackPoint: {fileID: 128612871}
   animator: {fileID: 467399780}
   player: {fileID: 1464456912}

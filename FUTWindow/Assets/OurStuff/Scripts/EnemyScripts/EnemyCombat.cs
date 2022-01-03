@@ -32,9 +32,12 @@ public class EnemyCombat : MonoBehaviour
         {
             animator.SetBool("isPunching", true);
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-
-            player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
-            Debug.Log("hit " + player.name);
+            if (hitPlayer.Length > 0)
+            {
+                hitPlayer[0].GetComponent<PlayerCombat>().TakeDamage(attackDamage);
+                Debug.Log("hit " + player.name);
+            }
+            //player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
         }
     }
     private void OnDrawGizmosSelected()
