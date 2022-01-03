@@ -9,25 +9,26 @@ public class EnemyCombat : MonoBehaviour
     public Transform attackPoint;
     public Animator animator;
     public GameObject player;
-    public float attackRange = .5f;
+    public float attackRange = 5f;
     public int attackDamage;
     public int maxHP = 100;
     int currentHP;
+    IEnumerator coroutine;
 
     void Start()
     {
         currentHP = maxHP;
-        StartCoroutine("Cooldown");
+        coroutine = Cooldown();
+        StartCoroutine(coroutine);
     }
 
     private void Update()
     {
-
     }
 
     public void Attack()
     {
-        if (animator.GetBool("IsInRange"))
+        if (animator.GetBool("IsInRange") && !player.GetComponent<PlayerCombat>().isDead)
         {
             animator.SetBool("isPunching", true);
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
@@ -65,7 +66,10 @@ public class EnemyCombat : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(1);
-        Attack();
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            Attack();
+        }
     }
 }

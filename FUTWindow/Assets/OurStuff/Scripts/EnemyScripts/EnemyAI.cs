@@ -33,6 +33,8 @@ public class EnemyAI : MonoBehaviour
         if (targetDistance < chaseDistance && targetDistance > stopDistance)
         {
             ChasePlayer();
+            animator.SetBool("IsInRange", false);
+
         }
         else
         {

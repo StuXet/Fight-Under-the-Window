@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform grabDetect;
     public Transform boxHolder;
     public float rayDist;
+    public bool isDead = false;
 
 
     public void Attack()
@@ -62,8 +63,9 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Player Died!");
         animator.SetBool("IsDead", true);
 
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
+        isDead = true;
     }
 
 }

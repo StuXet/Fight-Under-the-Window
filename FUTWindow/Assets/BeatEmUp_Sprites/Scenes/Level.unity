@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1507aa1d64078245920025dd1d51d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 20
+  maxHP: 100
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
   attackDamage: 15
@@ -1505,6 +1505,7 @@ MonoBehaviour:
   grabDetect: {fileID: 1138487519}
   boxHolder: {fileID: 676651468}
   rayDist: 2
+  isDead: 0
 --- !u!114 &1484912897 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
