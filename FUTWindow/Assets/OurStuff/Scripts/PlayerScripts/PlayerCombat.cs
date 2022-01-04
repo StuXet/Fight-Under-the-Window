@@ -18,14 +18,15 @@ public class PlayerCombat : MonoBehaviour
 
 
     public void Attack()
-    {
-        animator.SetTrigger("Punch");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (var enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyCombat>().TakeDamage(attackDamage);
-            Debug.Log("HIT " + enemy.name);
-        }
+    { 
+       animator.SetTrigger("Punch");
+       Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+       foreach (var enemy in hitEnemies)
+       {
+           enemy.GetComponent<EnemyCombat>().TakeDamage(attackDamage);
+           Debug.Log("HIT " + enemy.name);
+       }
+        
     }
     public void PickUpFunc()
     {
@@ -62,10 +63,9 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("Player Died!");
         animator.SetBool("IsDead", true);
-
+        isDead = true;
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
-        isDead = true;
     }
 
 }

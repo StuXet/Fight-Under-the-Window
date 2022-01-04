@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float speed;
     public float chaseDistance;
     public float stopDistance;
-    public GameObject target;
-    public GameObject enemy;
-    private float hor;
-    public Transform RposAttackPoint;
-    public Transform LposAttackPoint;
-    public Transform attackPoint;
+    public float speed;
+    public float yRange = 1;
 
     private float targetDistance;
+    private float hor;
+    private float yDistance;
+
+    public Transform LposAttackPoint;
+    public Transform RposAttackPoint;
+    public Transform attackPoint;
+    public GameObject target;
+    public GameObject enemy;
+
 
     [SerializeField]
     Animator animator;
@@ -30,7 +34,8 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         targetDistance = Vector2.Distance(transform.position, target.transform.position);
-        if (targetDistance < chaseDistance && targetDistance > stopDistance)
+        yDistance = Mathf.Abs(transform.position.y - target.transform.position.y);
+        if ((targetDistance < chaseDistance && targetDistance > stopDistance) || yDistance > yRange)
         {
             ChasePlayer();
             animator.SetBool("IsInRange", false);
