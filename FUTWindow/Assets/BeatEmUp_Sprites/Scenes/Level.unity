@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &10813371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1464456917}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: PickUpFunc
+        m_MethodName: UpperCut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -637,7 +637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1464456917}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: jab
+        m_MethodName: Jab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1894,8 +1894,8 @@ MonoBehaviour:
   maxHP: 100
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
-  jabDamage: 1
-  uppercutDamage: 15
+  jabDamage: 3
+  uppercutDamage: 2
   attackRange: 0.24
   enemyLayers:
     serializedVersion: 2

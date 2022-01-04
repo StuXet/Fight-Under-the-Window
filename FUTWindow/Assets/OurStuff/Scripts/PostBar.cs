@@ -16,12 +16,19 @@ public class PostBar : MonoBehaviour
         slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offSet);
     }
 
-    public void SetHealth(float cHealth, float mHealth)
+    public void SetPost(float cPost, float mPost, float pBp)
     {
-        slider.gameObject.SetActive(cHealth < mHealth);
-        slider.value = cHealth;
-        slider.maxValue = mHealth;
+        slider.gameObject.SetActive(cPost < mPost);
+        slider.value = cPost;
+        slider.maxValue = mPost;
 
-        slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
+        if (cPost < pBp)
+        {
+            slider.fillRect.GetComponentInChildren<Image>().color = low;
+        }
+        else
+        {
+            slider.fillRect.GetComponentInChildren<Image>().color = high;
+        }
     }
 }

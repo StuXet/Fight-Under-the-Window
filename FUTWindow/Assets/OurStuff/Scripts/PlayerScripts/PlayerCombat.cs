@@ -18,9 +18,9 @@ public class PlayerCombat : MonoBehaviour
     public bool isDead = false;
 
 
-    public void jab()
+    public void Jab()
     { 
-       animator.SetTrigger("Punch");
+       animator.SetTrigger("Jab");
        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
        foreach (var enemy in hitEnemies)
        {
@@ -29,6 +29,19 @@ public class PlayerCombat : MonoBehaviour
        }
         
     }
+
+    public void UpperCut()
+    {
+        animator.SetTrigger("Uppercut");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (var enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyCombat>().TakeDamage(uppercutDamage, "Uppercut");
+            Debug.Log("HIT " + enemy.name);
+        }
+
+    }
+
     public void PickUpFunc()
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);

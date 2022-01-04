@@ -13,6 +13,7 @@ public class EnemyCombat : MonoBehaviour
     public GameObject player;
     public float attackRange = 5f;
     public int attackDamage;
+    public float postBreakpoint = 25;
     public int maxPost = 100;
     int currentPost;
     public int maxHP = 100;
@@ -24,7 +25,6 @@ public class EnemyCombat : MonoBehaviour
         currentHP = maxHP;
         currentPost = maxPost;  
         healthBar.SetHealth(currentHP, maxHP);
-        postBar.SetHealth(currentPost, maxPost);
         StartCoroutine("Cooldown");
         StartCoroutine("PostureRegenerator");
     }
@@ -32,11 +32,11 @@ public class EnemyCombat : MonoBehaviour
     private void Update()
     {
         healthBar.SetHealth(currentHP, maxHP);
-        postBar.SetHealth(currentPost, maxPost);
+        postBar.SetPost(currentPost, maxPost, postBreakpoint);
         ZeroPost();
     }
 
-    public void Attack()
+    public void Jab()
     {
         if (animator.GetBool("IsInRange") && !player.GetComponent<PlayerCombat>().isDead && !isDead)
         {
@@ -70,8 +70,10 @@ public class EnemyCombat : MonoBehaviour
                     animator.SetTrigger("Hurt");
                     break;
                 }
-            case "UpperCut":
+            case "Uppercut":
                 {
+                    currentHP -= Damage + (150 / (currentPost + 1));
+                    animator.SetTrigger("Hurt");
                     break;
                 }
             default:
@@ -100,7 +102,7 @@ public class EnemyCombat : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            Attack();
+            Jab();
         }
     }
     
