@@ -637,7 +637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1464456917}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: jab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1095,9 +1095,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1464456912}
+    - target: {fileID: 3923875927508827394, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4753810308654670668, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847528494853504995, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368576485756841985, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
       propertyPath: m_RootOrder
@@ -1886,7 +1894,8 @@ MonoBehaviour:
   maxHP: 100
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
-  attackDamage: 15
+  jabDamage: 1
+  uppercutDamage: 15
   attackRange: 0.24
   enemyLayers:
     serializedVersion: 2

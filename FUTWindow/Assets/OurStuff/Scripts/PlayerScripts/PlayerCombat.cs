@@ -8,7 +8,8 @@ public class PlayerCombat : MonoBehaviour
     int currentHP;
     public Animator animator;
     public Transform attackPoint;
-    public int attackDamage = 15;
+    public int jabDamage = 3;
+    public int uppercutDamage = 15;
     public float attackRange = .5f;
     public LayerMask enemyLayers;
     public Transform grabDetect;
@@ -17,13 +18,13 @@ public class PlayerCombat : MonoBehaviour
     public bool isDead = false;
 
 
-    public void Attack()
+    public void jab()
     { 
        animator.SetTrigger("Punch");
        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
        foreach (var enemy in hitEnemies)
        {
-           enemy.GetComponent<EnemyCombat>().TakeDamage(attackDamage);
+           enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Jab");
            Debug.Log("HIT " + enemy.name);
        }
         
@@ -33,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
         grabCheck.collider.gameObject.transform.parent = boxHolder;
         grabCheck.collider.gameObject.transform.position = boxHolder.position;
-        attackDamage += 10;
+        jabDamage += 10;
         Debug.Log("Picked Up! +10 Damage!");
         /* Drop */
         //grabCheck.collider.gameObject.transform.parent = null;

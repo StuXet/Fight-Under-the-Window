@@ -9,25 +9,31 @@ public class EnemyCombat : MonoBehaviour
     public Transform attackPoint;
     public Animator animator;
     public HpBar healthBar;
+    public PostBar postBar;
     public GameObject player;
     public float attackRange = 5f;
     public int attackDamage;
+    public int maxPost = 100;
+    int currentPost;
     public int maxHP = 100;
-    bool isDead = false;
     int currentHP;
-    IEnumerator coroutine;
+    bool isDead = false;
 
     void Start()
     {
         currentHP = maxHP;
+        currentPost = maxPost;  
         healthBar.SetHealth(currentHP, maxHP);
-        coroutine = Cooldown();
-        StartCoroutine(coroutine);
+        postBar.SetHealth(currentPost, maxPost);
+        StartCoroutine("Cooldown");
+        StartCoroutine("PostureRegenerator");
     }
 
     private void Update()
     {
         healthBar.SetHealth(currentHP, maxHP);
+        postBar.SetHealth(currentPost, maxPost);
+        ZeroPost();
     }
 
     public void Attack()
@@ -52,10 +58,26 @@ public class EnemyCombat : MonoBehaviour
     }
 
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(int Damage, string attackType)
     {
-        currentHP -= Damage;
-        animator.SetTrigger("Hurt");
+
+        switch (attackType)
+        {
+            case "Jab":
+                {
+                    currentHP -= Damage;
+                    currentPost -= 20;
+                    animator.SetTrigger("Hurt");
+                    break;
+                }
+            case "UpperCut":
+                {
+                    break;
+                }
+            default:
+                break;
+        }
+        
         if (currentHP <= 0)
         {
             Die();
@@ -79,6 +101,26 @@ public class EnemyCombat : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             Attack();
+        }
+    }
+    
+    IEnumerator PostureRegenerator()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            if (currentPost < maxPost)
+            {
+                currentPost += 5;
+            }
+        }
+    }
+
+    void ZeroPost()
+    {
+        if (currentPost < 0)
+        {
+            currentPost = 0;
         }
     }
 }
