@@ -56,9 +56,9 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6666667
-        value: {x: 0, y: 0.19752507, z: 0}
-        inSlope: {x: 0, y: -9.8050165, z: 0}
-        outSlope: {x: 0, y: -9.8050165, z: 0}
+        value: {x: 0, y: 0.19752519, z: 0}
+        inSlope: {x: 0, y: -9.805015, z: 0}
+        outSlope: {x: 0, y: -9.805015, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -85,7 +85,7 @@ AnimationClip:
         time: 1
         value: {x: 0, y: 0.042869963, z: 0}
         inSlope: {x: 0, y: -5.864174, z: 0}
-        outSlope: {x: 0, y: Infinity, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -93,15 +93,6 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.0333333
         value: {x: 0, y: 0.042869963, z: 0}
-        inSlope: {x: 0, y: Infinity, z: 0}
-        outSlope: {x: 0, y: Infinity, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 2
-        value: {x: 0, y: 0.030675828, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -126,12 +117,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 1cbcd735476c6ad46ab4549faa6fd71e, type: 3}
     - time: 1.0333333
       value: {fileID: 21300000, guid: 2cc0b571ad056ea4188b433c2fbf1fb3, type: 3}
-    - time: 2.05
-      value: {fileID: 21300000, guid: 41c7029992ccaf54caaa1a2e7922d8c2, type: 3}
-    - time: 2.2166667
-      value: {fileID: 21300000, guid: a6c7ff90f3aeba14ebe997dead038ec7, type: 3}
-    - time: 2.3333333
-      value: {fileID: 21300000, guid: ce7f9b0eaa7908c4680e797febb30e41, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -163,15 +148,12 @@ AnimationClip:
     - {fileID: 21300000, guid: 2cc0b571ad056ea4188b433c2fbf1fb3, type: 3}
     - {fileID: 21300000, guid: 1cbcd735476c6ad46ab4549faa6fd71e, type: 3}
     - {fileID: 21300000, guid: 2cc0b571ad056ea4188b433c2fbf1fb3, type: 3}
-    - {fileID: 21300000, guid: 41c7029992ccaf54caaa1a2e7922d8c2, type: 3}
-    - {fileID: 21300000, guid: a6c7ff90f3aeba14ebe997dead038ec7, type: 3}
-    - {fileID: 21300000, guid: ce7f9b0eaa7908c4680e797febb30e41, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.35
+    m_StopTime: 1.05
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -244,15 +226,6 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -305,15 +278,6 @@ AnimationClip:
         inSlope: -5.864174
         outSlope: Infinity
         tangentMode: 97
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2
-        value: 0.030675828
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -381,15 +345,6 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -400,25 +355,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.6666667
-    functionName: PlaySFX
-    data: Drop
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.68333334
-    functionName: CamShakeSmall
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.0166667
-    functionName: PlaySFX
-    data: Drop
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

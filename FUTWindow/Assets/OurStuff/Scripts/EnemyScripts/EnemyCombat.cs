@@ -15,6 +15,7 @@ public class EnemyCombat : MonoBehaviour
     public int attackDamage;
     public float postBreakpoint = 25;
     public int maxPost = 100;
+    public bool isDown = false;
     int currentPost;
     public int maxHP = 100;
     int currentHP;
@@ -34,11 +35,12 @@ public class EnemyCombat : MonoBehaviour
         healthBar.SetHealth(currentHP, maxHP);
         postBar.SetPost(currentPost, maxPost, postBreakpoint);
         ZeroPost();
+        IsDown();
     }
 
     public void Jab()
     {
-        if (animator.GetBool("IsInRange") && !player.GetComponent<PlayerCombat>().isDead && !isDead)
+        if (animator.GetBool("IsInRange") && !player.GetComponent<PlayerCombat>().isDead && !isDead && !isDown)
         {
             animator.SetBool("isPunching", true);
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
@@ -72,8 +74,22 @@ public class EnemyCombat : MonoBehaviour
                 }
             case "Uppercut":
                 {
-                    currentHP -= Damage + (150 / (currentPost + 1));
-                    animator.SetTrigger("Hurt");
+                    currentHP -= Damage + (50 / (currentPost + 1));
+                    if (currentPost <= maxPost * 0.25 && currentHP > 0)
+                    {
+                        isDown = true;  
+                        animator.SetTrigger("Down");
+                    }
+                    else if (currentPost <= maxPost * 0.25 && currentHP <= 0)
+                    {
+                        isDown = true;
+                        animator.SetTrigger("Down");
+                        Die();
+                    }
+                    else if (currentPost > maxPost * 0.25)
+                    {
+                     animator.SetTrigger("Hurt");
+                    }
                     break;
                 }
             default:
@@ -83,6 +99,24 @@ public class EnemyCombat : MonoBehaviour
         if (currentHP <= 0)
         {
             Die();
+        }
+    }
+
+    public void IsDown()
+    {
+        if (isDown)
+        {
+            GetComponentInChildren<BoxCollider2D>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<EnemyAI>().enabled = false;
+
+        }
+        else
+        {
+            GetComponentInChildren<BoxCollider2D>().enabled = true;
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<EnemyAI>().enabled = true; 
+
         }
     }
     void Die()

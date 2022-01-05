@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 467399780}
+  combat: {fileID: 1993185554}
 --- !u!4 &287726947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013211470430, guid: 1a39502dfbf81bc41a3705a07f89e1ce, type: 3}
@@ -565,7 +566,7 @@ GameObject:
   - component: {fileID: 375914804}
   - component: {fileID: 375914803}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Jab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1095,6 +1096,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1464456912}
+    - target: {fileID: 3613732111089850242, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3923875927508827394, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1903,6 +1908,7 @@ MonoBehaviour:
   grabDetect: {fileID: 1138487519}
   boxHolder: {fileID: 676651468}
   rayDist: 2
+  blockReducer: 0.76
   isDead: 0
 --- !u!114 &1484912897 stripped
 MonoBehaviour:
@@ -2720,6 +2726,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 187490, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
   m_PrefabInstance: {fileID: 711131534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1993185554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3613732111089850242, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+  m_PrefabInstance: {fileID: 711131534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993185553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ea6b84213a6d54fbb2dce92fe269cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &1993185556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2969,13 +2986,14 @@ GameObject:
   - component: {fileID: 2104025437}
   - component: {fileID: 2104025436}
   - component: {fileID: 2104025435}
+  - component: {fileID: 2104025438}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2104025434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3039,19 +3057,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104025436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1464456915}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Defend
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2104025436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,3 +3096,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104025433}
   m_CullTransparentMesh: 1
+--- !u!114 &2104025438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104025433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1464456917}
+          m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+          m_MethodName: ToggleBlock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1464456917}
+          m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+          m_MethodName: ToggleBlock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

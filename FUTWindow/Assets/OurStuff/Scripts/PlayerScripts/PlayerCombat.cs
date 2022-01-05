@@ -15,7 +15,11 @@ public class PlayerCombat : MonoBehaviour
     public Transform grabDetect;
     public Transform boxHolder;
     public float rayDist;
+    [Range(0f, 1f)]
+    public float blockReducer;
     public bool isDead = false;
+    bool isBlocking = false;
+
 
 
     public void Jab()
@@ -42,6 +46,7 @@ public class PlayerCombat : MonoBehaviour
 
     }
 
+
     public void PickUpFunc()
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
@@ -52,6 +57,20 @@ public class PlayerCombat : MonoBehaviour
         /* Drop */
         //grabCheck.collider.gameObject.transform.parent = null;
 
+    }
+
+    public void ToggleBlock()
+    {
+        if (isBlocking)
+        {
+            animator.SetBool("IsBlocking", false);
+            isBlocking = false;
+        }
+        else
+        {
+            animator.SetBool("IsBlocking", true);
+            isBlocking = true;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -66,8 +85,17 @@ public class PlayerCombat : MonoBehaviour
     }
     public void TakeDamage(int Damage)
     {
-        currentHP -= Damage;
-        animator.SetTrigger("Hurt");
+        if (isBlocking)
+        {
+            currentHP -= Mathf.RoundToInt(Damage - Damage * blockReducer);
+            animator.SetTrigger("Hurt");
+        }
+        else
+        {
+            currentHP -= Damage;
+            animator.SetTrigger("Hurt");
+        }
+        
         if (currentHP <= 0)
         {
             Die();
