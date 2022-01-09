@@ -30,8 +30,10 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        waveCountdown = timeBetweenWaves;
-       
+        //waveCountdown = timeBetweenWaves;
+
+        timeBetweenWaves = waveCountdown;
+
     }
 
      void Update()

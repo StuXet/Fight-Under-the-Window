@@ -62,6 +62,7 @@ public class EnemyCombat : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EnemyAI>().enabled = false;
         this.enabled = false;
+        Destroy(gameObject, 3);
     }
 
     IEnumerator Cooldown()
