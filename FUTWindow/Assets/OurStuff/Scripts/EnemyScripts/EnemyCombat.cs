@@ -18,6 +18,8 @@ public class EnemyCombat : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        playerLayers = LayerMask.GetMask("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         coroutine = Cooldown();
         StartCoroutine(coroutine);
     }
