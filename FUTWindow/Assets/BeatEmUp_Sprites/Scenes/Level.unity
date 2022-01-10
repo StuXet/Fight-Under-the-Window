@@ -1084,6 +1084,10 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3613732111089850242, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
+      propertyPath: floatingPoints
+      value: 
+      objectReference: {fileID: 5634288527128820250, guid: 67fe8dccb48df294bb41fed892ef999a, type: 3}
     - target: {fileID: 3923875927508827394, guid: 9be13c6a0f5966a44a2f6af06a77adb0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1525,8 +1529,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2036839783
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: -1000
   m_Sprite: {fileID: 21300000, guid: a79c9199b00397344b8d5354187410ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
