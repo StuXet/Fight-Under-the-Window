@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 774876687
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2e13b593d61ea0546ba40197bd0fe1d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -165,7 +165,9 @@ MonoBehaviour:
   player: {fileID: 0}
   attackRange: 0.5
   attackDamage: 0
+  postBreakpoint: 25
   maxPost: 100
+  isDown: 0
   maxHP: 100
 --- !u!1 &194592
 GameObject:
@@ -237,8 +239,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 774876687
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ce7f9b0eaa7908c4680e797febb30e41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
