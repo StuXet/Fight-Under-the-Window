@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -65,14 +66,14 @@ public class EnemyAI : MonoBehaviour
     {
         if (transform.position.x < target.transform.position.x)
         {
-            sR.flipX = true;
-            enemy.GetComponent<SpriteRenderer>().flipX = true;
+            sR.flipX = false;
+            enemy.GetComponent<SpriteRenderer>().flipX = false;
             attackPoint.transform.position = LposAttackPoint.transform.position;
         }
         else
         {
-            sR.flipX = false;
-            enemy.GetComponent<SpriteRenderer>().flipX = false;
+            sR.flipX = true;
+            enemy.GetComponent<SpriteRenderer>().flipX = true;
             attackPoint.transform.position = RposAttackPoint.transform.position;
         }
     }

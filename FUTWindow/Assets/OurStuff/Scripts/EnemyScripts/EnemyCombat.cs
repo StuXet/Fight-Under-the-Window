@@ -27,6 +27,8 @@ public class EnemyCombat : MonoBehaviour
         currentHP = maxHP;
         currentPost = maxPost;  
         healthBar.SetHealth(currentHP, maxHP);
+        playerLayers = LayerMask.GetMask("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("Cooldown");
         StartCoroutine("PostureRegenerator");
     }
