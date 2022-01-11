@@ -116,7 +116,6 @@ public class EnemyCombat : MonoBehaviour
                     Damage = Damage + (100 / (currentPost + 1));
                     FloatingDamage(Damage);
                     currentHP -= Damage;
-                    isKnockBack = true;
 
                     if (sr.flipX)
                     {
@@ -129,11 +128,13 @@ public class EnemyCombat : MonoBehaviour
 
                     if (currentPost <= maxPost * 0.25 && currentHP > 0)
                     {
+                        isKnockBack = true;
                         isDown = true;
                         animator.SetTrigger("Down");
                     }
                     else if (currentPost <= maxPost * 0.25 && currentHP <= 0)
                     {
+                        isKnockBack = true;
                         isDown = true;
                         animator.SetTrigger("Down");
                         Die();
@@ -208,7 +209,7 @@ public class EnemyCombat : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            if (currentPost < maxPost)
+            if (currentPost < maxPost && !isDown)
             {
                 currentPost += 5;
             }
