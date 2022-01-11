@@ -70,8 +70,9 @@ public class EnemyCombat : MonoBehaviour
         {
             case "Jab":
                 {
-                    GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                    Destroy(go, 3);
+                    //GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+                    //Destroy(go, 3);
+                    FloatingDamage(Damage);
                     currentHP -= Damage;
                     currentPost -= 20;
                     animator.SetTrigger("Hurt");
@@ -79,8 +80,10 @@ public class EnemyCombat : MonoBehaviour
                 }
             case "Uppercut":
                 {
-                    GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                    Destroy(go, 3);
+                    //GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+                    //Destroy(go, 3);
+                    Damage = Damage + (50 / (currentPost + 1));
+                    FloatingDamage(Damage);
                     currentHP -= Damage + (50 / (currentPost + 1));
                     if (currentPost <= maxPost * 0.25 && currentHP > 0)
                     {
@@ -159,6 +162,13 @@ public class EnemyCombat : MonoBehaviour
                 currentPost += 5;
             }
         }
+    }
+
+    void FloatingDamage(int dmg)
+    {
+        GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        go.GetComponentInChildren<TextMesh>().text = dmg.ToString();
+        Destroy(go, 3);
     }
 
     void ZeroPost()
