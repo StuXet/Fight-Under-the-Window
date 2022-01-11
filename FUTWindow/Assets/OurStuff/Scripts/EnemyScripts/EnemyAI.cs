@@ -68,13 +68,13 @@ public class EnemyAI : MonoBehaviour
         {
             sR.flipX = false;
             enemy.GetComponent<SpriteRenderer>().flipX = false;
-            attackPoint.transform.position = LposAttackPoint.transform.position;
+            attackPoint.transform.position = RposAttackPoint.transform.position;
         }
         else
         {
             sR.flipX = true;
             enemy.GetComponent<SpriteRenderer>().flipX = true;
-            attackPoint.transform.position = RposAttackPoint.transform.position;
+            attackPoint.transform.position = LposAttackPoint.transform.position;
         }
     }
 }

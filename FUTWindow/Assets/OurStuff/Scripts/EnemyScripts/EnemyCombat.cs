@@ -9,6 +9,7 @@ public class EnemyCombat : MonoBehaviour
     public Transform attackPoint;
     public Animator animator;
     public HpBar healthBar;
+    public EnemyAI enemyAI;
     public PostBar postBar;
     public GameObject player;
     public GameObject floatingPoints;
@@ -70,8 +71,6 @@ public class EnemyCombat : MonoBehaviour
         {
             case "Jab":
                 {
-                    //GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                    //Destroy(go, 3);
                     FloatingDamage(Damage);
                     currentHP -= Damage;
                     currentPost -= 20;
@@ -80,11 +79,9 @@ public class EnemyCombat : MonoBehaviour
                 }
             case "Uppercut":
                 {
-                    //GameObject go = Instantiate(floatingPoints, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                    //Destroy(go, 3);
                     Damage = Damage + (50 / (currentPost + 1));
                     FloatingDamage(Damage);
-                    currentHP -= Damage + (50 / (currentPost + 1));
+                    currentHP -= Damage;
                     if (currentPost <= maxPost * 0.25 && currentHP > 0)
                     {
                         isDown = true;  
@@ -100,6 +97,46 @@ public class EnemyCombat : MonoBehaviour
                     {
                      animator.SetTrigger("Hurt");
                     }
+                    break;
+                }
+            case "Hook":
+                {
+                    Damage = Damage * 2;
+                    FloatingDamage(Damage);
+                    currentHP -= Damage;
+                    currentPost -= 5;
+                    animator.SetTrigger("Hurt");
+                    break;
+                }
+            case "PushKick":
+                {
+                    Damage = Damage + (100 / (currentPost + 1));
+                    FloatingDamage(Damage);
+                    currentHP -= Damage;
+                    if (currentPost <= maxPost * 0.25 && currentHP > 0)
+                    {
+                        isDown = true;
+                        animator.SetTrigger("Down");
+                    }
+                    else if (currentPost <= maxPost * 0.25 && currentHP <= 0)
+                    {
+                        isDown = true;
+                        animator.SetTrigger("Down");
+                        Die();
+                    }
+                    else if (currentPost > maxPost * 0.25)
+                    {
+                        animator.SetTrigger("Hurt");
+                    }
+                    break;
+                }
+            case "LowKick":
+                {
+                    Damage = Damage * 2;
+                    FloatingDamage(Damage);
+                    currentHP -= Damage;
+                    currentPost -= 5;
+                    animator.SetTrigger("Hurt");
                     break;
                 }
             default:

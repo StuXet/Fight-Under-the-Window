@@ -12,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
     public int uppercutDamage = 15;
     public float attackRange = .5f;
     public LayerMask enemyLayers;
+    public PlayerHpBar healthBar;
     public Transform grabDetect;
     public Transform boxHolder;
     public float rayDist;
@@ -19,19 +20,68 @@ public class PlayerCombat : MonoBehaviour
     public float blockReducer;
     public bool isDead = false;
     bool isBlocking = false;
+    public float attackTimer;
+    bool runAttackTimer = false;
 
+    void Start()
+    {
+        currentHP = maxHP;
+        healthBar.SetHealth(currentHP, maxHP);
+    }
 
-
+    private void Update()
+    {
+        healthBar.SetHealth(currentHP, maxHP);
+        StartAttackTimer();
+    }
     public void Jab()
     { 
-       animator.SetTrigger("Jab");
-       Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-       foreach (var enemy in hitEnemies)
-       {
-           enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Jab");
-           Debug.Log("HIT " + enemy.name);
-       }
-        
+        if (attackTimer < 0.3)
+        {
+            animator.SetTrigger("Jab");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (var enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Jab");
+                Debug.Log("HIT " + enemy.name);
+            }
+        }
+        else if (attackTimer >= 0.3)
+        {
+           animator.SetTrigger("Hook");
+           Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+           foreach (var enemy in hitEnemies)
+           {
+               enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Hook");
+               Debug.Log("HIT " + enemy.name);
+           }
+        }
+        attackTimer = 0;
+    }
+
+    public void Kick()
+    {
+        if (attackTimer < 0.3)
+        {
+            animator.SetTrigger("LowKick");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (var enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "LowKick");
+                Debug.Log("HIT " + enemy.name);
+            }
+        }
+        else if (attackTimer >= 0.3)
+        {
+            animator.SetTrigger("PushKick");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (var enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "PushKick");
+                Debug.Log("HIT " + enemy.name);
+            }
+        }
+        attackTimer = 0;
     }
 
     public void UpperCut()
@@ -79,10 +129,6 @@ public class PlayerCombat : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-    void Start()
-    {
-        currentHP = maxHP;
-    }
     public void TakeDamage(int Damage)
     {
         if (isBlocking)
@@ -103,11 +149,29 @@ public class PlayerCombat : MonoBehaviour
     }
     void Die()
     {
+        healthBar.SetHealth(0, maxHP);
         Debug.Log("Player Died!");
         animator.SetBool("IsDead", true);
         isDead = true;
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
+    }
+
+    void StartAttackTimer()
+    {
+        if (runAttackTimer)
+        {
+            attackTimer += Time.deltaTime;
+        }
+    }
+
+    public void SetRatTrue()
+    {
+        runAttackTimer = true;
+    }
+    public void SetRatFalse()
+    {
+        runAttackTimer = false;
     }
 
 }
