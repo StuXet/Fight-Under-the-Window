@@ -57,7 +57,6 @@ public class EnemyCombat : MonoBehaviour
                 hitPlayer[0].GetComponent<PlayerCombat>().TakeDamage(attackDamage);
                 Debug.Log("hit " + player.name);
             }
-            //player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
         }
     }
     private void OnDrawGizmosSelected()
@@ -147,10 +146,10 @@ public class EnemyCombat : MonoBehaviour
                 }
             case "LowKick":
                 {
-                    Damage = Damage * 2;
                     FloatingDamage(Damage);
                     currentHP -= Damage;
-                    currentPost -= 5;
+                    currentPost -= 25;
+                    enemyAI.speed = enemyAI.speed * 0.95f;
                     animator.SetTrigger("Hurt");
                     break;
                 }

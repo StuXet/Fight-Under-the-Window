@@ -1046,7 +1046,7 @@ MonoBehaviour:
   attackPoint: {fileID: 2732092996436166884}
   animator: {fileID: 8028611659406073893}
   healthBar: {fileID: 233968374019493377}
-  enemyAI: {fileID: 0}
+  enemyAI: {fileID: 5568620511206032116}
   sr: {fileID: 8028611659425688819}
   postBar: {fileID: 3564939016942635467}
   player: {fileID: 0}
@@ -1057,6 +1057,7 @@ MonoBehaviour:
   maxPost: 100
   isDown: 0
   maxHP: 100
+  isKnockBack: 0
 --- !u!61 &8028611658396639358
 BoxCollider2D:
   m_ObjectHideFlags: 0
