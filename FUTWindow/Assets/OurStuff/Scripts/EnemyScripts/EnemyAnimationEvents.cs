@@ -15,4 +15,9 @@ public class EnemyAnimationEvents : MonoBehaviour
     {
         combat.isDown = false;
     }
+
+    void SetKnockBackFalse()
+    {
+        combat.isKnockBack = false;
+    }
 }

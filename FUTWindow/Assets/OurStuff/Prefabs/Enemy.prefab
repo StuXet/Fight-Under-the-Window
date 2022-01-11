@@ -1046,6 +1046,8 @@ MonoBehaviour:
   attackPoint: {fileID: 2732092996436166884}
   animator: {fileID: 8028611659406073893}
   healthBar: {fileID: 233968374019493377}
+  enemyAI: {fileID: 0}
+  sr: {fileID: 8028611659425688819}
   postBar: {fileID: 3564939016942635467}
   player: {fileID: 0}
   floatingPoints: {fileID: 5634288527128820250, guid: 67fe8dccb48df294bb41fed892ef999a, type: 3}

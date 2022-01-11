@@ -10,6 +10,7 @@ public class EnemyCombat : MonoBehaviour
     public Animator animator;
     public HpBar healthBar;
     public EnemyAI enemyAI;
+    public SpriteRenderer sr;
     public PostBar postBar;
     public GameObject player;
     public GameObject floatingPoints;
@@ -19,9 +20,11 @@ public class EnemyCombat : MonoBehaviour
     public int maxPost = 100;
     public bool isDown = false;
     int currentPost;
+    Vector3 knockbackTo;
     public int maxHP = 100;
     int currentHP;
     bool isDead = false;
+    public bool isKnockBack;
 
     void Start()
     {
@@ -40,6 +43,7 @@ public class EnemyCombat : MonoBehaviour
         postBar.SetPost(currentPost, maxPost, postBreakpoint);
         ZeroPost();
         IsDown();
+        KnockBack();
     }
 
     public void Jab()
@@ -113,6 +117,17 @@ public class EnemyCombat : MonoBehaviour
                     Damage = Damage + (100 / (currentPost + 1));
                     FloatingDamage(Damage);
                     currentHP -= Damage;
+                    isKnockBack = true;
+
+                    if (sr.flipX)
+                    {
+                        knockbackTo = new Vector3(transform.position.x + 3, transform.position.y, transform.position.z);
+                    }
+                    else
+                    {
+                        knockbackTo = new Vector3(transform.position.x - 3, transform.position.y, transform.position.z);
+                    }
+
                     if (currentPost <= maxPost * 0.25 && currentHP > 0)
                     {
                         isDown = true;
@@ -213,6 +228,14 @@ public class EnemyCombat : MonoBehaviour
         if (currentPost < 0)
         {
             currentPost = 0;
+        }
+    }
+
+    void KnockBack()
+    {
+        if (isKnockBack)
+        {
+            transform.position = Vector3.Lerp(gameObject.transform.position, knockbackTo, Time.deltaTime * 4);
         }
     }
 }
