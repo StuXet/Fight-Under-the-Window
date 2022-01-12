@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -28,13 +30,16 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     private SpawnState state = SpawnState.Counting;
+    public bool isGamePaused;
+    public GameObject restartButton;
+    public GameObject quitButton;
 
     void Start()
     {
         //waveCountdown = timeBetweenWaves;
 
         timeBetweenWaves = waveCountdown;
-
+        PauseGame();
 
     }
 
@@ -65,6 +70,8 @@ public class WaveSpawner : MonoBehaviour
                 waveCountdown -= Time.deltaTime;
             }
         }
+
+        CheckPauseButton();
     }
 
     void WaveCompleted()
@@ -119,5 +126,44 @@ public class WaveSpawner : MonoBehaviour
         Transform _sp = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
         Debug.Log("Spawning Enemy");
+    }
+    public void CheckPauseButton()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+
+    }
+    public void PauseGame()
+    {
+        if (isGamePaused)
+        {
+            Debug.Log("unpuased");
+            Time.timeScale = 1;
+            isGamePaused = false;
+            restartButton.SetActive(false);
+            quitButton.SetActive(false);
+        }
+
+        else
+        {
+            Time.timeScale = 0;
+            isGamePaused = true;
+            Debug.Log("paused");
+            restartButton.SetActive(true);
+            quitButton.SetActive(true);
+        }
+
+    }
+    public void RestartBottun()
+    {
+        SceneManager.LoadScene("Level");
+    }
+    public void QuitBottun()
+    {
+        Application.Quit();
+        Debug.Log("Quiting Game!");
     }
 }
