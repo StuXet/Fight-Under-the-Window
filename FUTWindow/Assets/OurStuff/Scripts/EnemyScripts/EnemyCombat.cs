@@ -151,7 +151,7 @@ public class EnemyCombat : MonoBehaviour
                     currentHP -= Damage;
                     currentPost -= 25;
                     enemyAI.speed = enemyAI.speed * 0.95f;
-                    animator.SetTrigger("Hurt");
+                    animator.SetTrigger("HitKick");
                     break;
                 }
             default:
