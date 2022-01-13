@@ -11,7 +11,6 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        
         public string name;
         public Transform enemy;
         public int count;
@@ -31,8 +30,7 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.Counting;
     public bool isGamePaused;
-    public GameObject restartButton;
-    public GameObject quitButton;
+    public GameObject restartButton, quitButton, jab, uppercut, kick, block;
 
     void Start()
     {
@@ -45,7 +43,6 @@ public class WaveSpawner : MonoBehaviour
 
      void Update()
     {
-
         if (state == SpawnState.Waiting)
         {
             if (!EnemyIsAlive())
@@ -145,6 +142,11 @@ public class WaveSpawner : MonoBehaviour
             isGamePaused = false;
             restartButton.SetActive(false);
             quitButton.SetActive(false);
+            jab.SetActive(true);
+            kick.SetActive(true);
+            uppercut.SetActive(true);
+            block.SetActive(true);
+
         }
 
         else
@@ -154,6 +156,10 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log("paused");
             restartButton.SetActive(true);
             quitButton.SetActive(true);
+            jab.SetActive(false);
+            kick.SetActive(false);
+            uppercut.SetActive(false);
+            block.SetActive(false);
         }
 
     }

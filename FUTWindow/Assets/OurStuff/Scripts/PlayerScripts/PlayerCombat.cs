@@ -20,23 +20,29 @@ public class PlayerCombat : MonoBehaviour
     public float blockReducer;
     public bool isDead = false;
     bool isBlocking = false;
-    public float attackTimer;
+    float chargeAttackTimer;
+    float jabCooldownTimer, hookCooldownTimer, uppercutCooldownTimer, lowkickCooldownTimer, pushkickCooldownTimer;
+    public float jabCooldown, hookCooldown, uppercutCooldown, lowkickCooldown, pushkickCooldown;
     bool runAttackTimer = false;
+
+
 
     void Start()
     {
         currentHP = maxHP;
         healthBar.SetHealth(currentHP, maxHP);
+        SetCooldownTimers();
     }
 
     private void Update()
     {
         healthBar.SetHealth(currentHP, maxHP);
         StartAttackTimer();
+        CooldownsTimer();
     }
     public void Jab()
     { 
-        if (attackTimer < 0.3)
+        if (chargeAttackTimer < 0.3 && jabCooldown <= jabCooldownTimer)
         {
             animator.SetTrigger("Jab");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -45,8 +51,9 @@ public class PlayerCombat : MonoBehaviour
                 enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Jab");
                 Debug.Log("HIT " + enemy.name);
             }
+            jabCooldownTimer = 0;
         }
-        else if (attackTimer >= 0.3)
+        else if (chargeAttackTimer >= 0.3 && hookCooldown <= hookCooldownTimer)
         {
            animator.SetTrigger("Hook");
            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -55,13 +62,14 @@ public class PlayerCombat : MonoBehaviour
                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Hook");
                Debug.Log("HIT " + enemy.name);
            }
+           hookCooldownTimer = 0;
         }
-        attackTimer = 0;
+        chargeAttackTimer = 0;
     }
 
     public void Kick()
     {
-        if (attackTimer < 0.3)
+        if (chargeAttackTimer < 0.3 && lowkickCooldown <= lowkickCooldownTimer)
         {
             animator.SetTrigger("LowKick");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -70,8 +78,9 @@ public class PlayerCombat : MonoBehaviour
                 enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "LowKick");
                 Debug.Log("HIT " + enemy.name);
             }
+            lowkickCooldownTimer = 0;
         }
-        else if (attackTimer >= 0.3)
+        else if (chargeAttackTimer >= 0.3 && pushkickCooldown <= pushkickCooldownTimer)
         {
             animator.SetTrigger("PushKick");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -80,20 +89,33 @@ public class PlayerCombat : MonoBehaviour
                 enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "PushKick");
                 Debug.Log("HIT " + enemy.name);
             }
+            pushkickCooldownTimer = 0;
         }
-        attackTimer = 0;
+        chargeAttackTimer = 0;
     }
 
     public void UpperCut()
     {
-        animator.SetTrigger("Uppercut");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (var enemy in hitEnemies)
+        if (uppercutCooldown <= uppercutCooldownTimer)
         {
-            enemy.GetComponent<EnemyCombat>().TakeDamage(uppercutDamage, "Uppercut");
-            Debug.Log("HIT " + enemy.name);
+            animator.SetTrigger("Uppercut");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (var enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyCombat>().TakeDamage(uppercutDamage, "Uppercut");
+                Debug.Log("HIT " + enemy.name);
+            }
+            uppercutCooldownTimer = 0;
         }
+    }
 
+    void CooldownsTimer()
+    {
+        jabCooldownTimer += Time.deltaTime;
+        hookCooldownTimer += Time.deltaTime;
+        uppercutCooldownTimer += Time.deltaTime;
+        lowkickCooldownTimer += Time.deltaTime;
+        pushkickCooldownTimer += Time.deltaTime;
     }
 
 
@@ -161,7 +183,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (runAttackTimer)
         {
-            attackTimer += Time.deltaTime;
+            chargeAttackTimer += Time.deltaTime;
         }
     }
 
@@ -172,6 +194,15 @@ public class PlayerCombat : MonoBehaviour
     public void SetRatFalse()
     {
         runAttackTimer = false;
+    }
+
+    void SetCooldownTimers()
+    {
+        jabCooldownTimer = jabCooldown;
+        hookCooldownTimer = hookCooldown;
+        uppercutCooldownTimer = uppercutCooldown;
+        lowkickCooldownTimer = lowkickCooldown;
+        pushkickCooldownTimer = pushkickCooldown;
     }
 
 }
