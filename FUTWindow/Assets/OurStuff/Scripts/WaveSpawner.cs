@@ -68,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
                 waveCountdown -= Time.deltaTime;
             }
         }
-        HandleWaveText();
+        //HandleWaveText();
         CheckPauseButton();
     }
 

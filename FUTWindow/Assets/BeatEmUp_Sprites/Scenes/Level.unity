@@ -1729,6 +1729,7 @@ MonoBehaviour:
   SpawnPoints:
   - {fileID: 196480181}
   - {fileID: 1371354157}
+  waveText: {fileID: 1569490378}
   timeBetweenWaves: 5
   isGamePaused: 1
   restartButton: {fileID: 192463383}
@@ -2513,7 +2514,7 @@ MonoBehaviour:
   maxHP: 100
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
-  jabDamage: 3
+  jabDamage: 114
   uppercutDamage: 2
   attackRange: 0.24
   enemyLayers:
