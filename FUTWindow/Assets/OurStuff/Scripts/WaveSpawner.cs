@@ -22,6 +22,7 @@ public class WaveSpawner : MonoBehaviour
     private int nextWave = 0;
 
     public Transform[] SpawnPoints;
+    public Text waveText;
 
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
@@ -67,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
                 waveCountdown -= Time.deltaTime;
             }
         }
-
+        HandleWaveText();
         CheckPauseButton();
     }
 
@@ -75,7 +76,6 @@ public class WaveSpawner : MonoBehaviour
     {
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
-
         if (nextWave +1 > waves.Length -1)
         {
             nextWave = 0;
@@ -124,6 +124,19 @@ public class WaveSpawner : MonoBehaviour
         Instantiate(_enemy, _sp.position, _sp.rotation);
         Debug.Log("Spawning Enemy");
     }
+
+    //void HandleWaveText()
+    //{
+    //    if (state == SpawnState.Spawning)
+    //    {
+    //        waveText.text = "peepee";
+    //    }
+    //    else //if (state == SpawnState.Counting)
+    //    {
+    //        waveText.text = "cum";
+    //    }
+    //}
+
     public void CheckPauseButton()
     {
 
