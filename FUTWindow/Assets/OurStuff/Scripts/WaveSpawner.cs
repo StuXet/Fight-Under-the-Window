@@ -26,6 +26,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] SpawnPoints;
     public Text waveText;
     public Text waveCompletedText;
+    public Text waveWord;
 
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
@@ -53,10 +54,14 @@ public class WaveSpawner : MonoBehaviour
             {
                 WaveCompleted();
                 waveCompletedText.gameObject.SetActive(true);
+                waveText.gameObject.SetActive(false);
+                waveWord.gameObject.SetActive(false);
             }
             else
             {
                 waveCompletedText.gameObject.SetActive(false);
+                waveText.gameObject.SetActive(true);
+                waveWord.gameObject.SetActive(true);
                 return;
             }
         }
