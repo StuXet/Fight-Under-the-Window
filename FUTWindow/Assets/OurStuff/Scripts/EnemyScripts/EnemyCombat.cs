@@ -161,8 +161,17 @@ public class EnemyCombat : MonoBehaviour
         if (currentHP <= 0)
         {
             Die();
-            // added destroy enemy for wavespawn system
-            Destroy(gameObject, 5);
+            //enemy flashing before death
+            Invoke("GetNoAlpha", 3.2f);
+            Invoke("GetAlphaBack", 3.3f);
+            Invoke("GetNoAlpha", 3.4f);
+            Invoke("GetAlphaBack", 3.5f);
+            Invoke("GetNoAlpha", 3.6f);
+            Invoke("GetAlphaBack", 3.7f);
+            Invoke("GetNoAlpha", 3.8f);
+            Invoke("GetAlphaBack", 3.9f);
+            //destroy enemy for wavespawn system
+            Destroy(gameObject, 4);
         }
     }
 
@@ -237,5 +246,16 @@ public class EnemyCombat : MonoBehaviour
         {
             transform.position = Vector3.Lerp(gameObject.transform.position, knockbackTo, Time.deltaTime * 4);
         }
+    }
+
+    void GetNoAlpha()
+    {
+        //enemy flashing before death
+        sr.color = new Color(1f, 1f, 1f, 0f);
+    }
+    void GetAlphaBack()
+    {
+        //enemy flashing before death
+        sr.color = new Color(1f, 1f, 1f, 1f);
     }
 }
