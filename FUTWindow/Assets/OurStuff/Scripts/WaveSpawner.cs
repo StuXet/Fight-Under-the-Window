@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState { Spawning, Waiting, Counting };
@@ -20,9 +21,11 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     private int nextWave = 0;
+    private int WaveNum = 1;
 
     public Transform[] SpawnPoints;
     public Text waveText;
+    public Text waveCompletedText;
 
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
@@ -49,10 +52,11 @@ public class WaveSpawner : MonoBehaviour
             if (!EnemyIsAlive())
             {
                 WaveCompleted();
-            
+                waveCompletedText.gameObject.SetActive(true);
             }
             else
             {
+                waveCompletedText.gameObject.SetActive(false);
                 return;
             }
         }
@@ -68,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
                 waveCountdown -= Time.deltaTime;
             }
         }
-        //HandleWaveText();
+        HandleWaveText();
         CheckPauseButton();
     }
 
@@ -81,6 +85,7 @@ public class WaveSpawner : MonoBehaviour
             nextWave = 0;
             Debug.Log("Completed all waves");
         }
+        WaveNum++;
         nextWave++;
     }
 
@@ -102,7 +107,9 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        
         Debug.Log("Spawning Wave");
+        
         state = SpawnState.Spawning;
         for (int i = 0; i < _wave.count; i++)
         {
@@ -116,6 +123,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
+        
         if (SpawnPoints.Length == 0)
         {
             Debug.LogError("No Enemy spawn points refrenced");
@@ -125,17 +133,12 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spawning Enemy");
     }
 
-    //void HandleWaveText()
-    //{
-    //    if (state == SpawnState.Spawning)
-    //    {
-    //        waveText.text = "peepee";
-    //    }
-    //    else //if (state == SpawnState.Counting)
-    //    {
-    //        waveText.text = "cum";
-    //    }
-    //}
+    void HandleWaveText()
+    {
+        waveText.text = WaveNum.ToString();
+    }
+
+
 
     public void CheckPauseButton()
     {

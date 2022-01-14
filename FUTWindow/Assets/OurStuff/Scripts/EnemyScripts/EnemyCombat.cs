@@ -162,7 +162,7 @@ public class EnemyCombat : MonoBehaviour
         {
             Die();
             // added destroy enemy for wavespawn system
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 5);
         }
     }
 
