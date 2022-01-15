@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    PlayerCombat player;
+    GameObject player;
     public int healthBoost = 10;
 
-    void start()
+    void Start()
     {
-        GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collider2D.gameObject.tag == "FoodGrab")
         {
             Debug.Log("Picked Up Food");
-            player.currentHP = +healthBoost;
+            player.GetComponent<PlayerCombat>().currentHP += healthBoost;
             Destroy(gameObject);
             // add hp
         }
     }
+
+
+
 }

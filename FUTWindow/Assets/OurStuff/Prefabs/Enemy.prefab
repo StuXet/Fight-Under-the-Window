@@ -1054,7 +1054,7 @@ MonoBehaviour:
   enemyDrops: {fileID: 105114, guid: 0c81f107079bedc4a93944b7d4ce4a5d, type: 3}
   enemyEXP: 1
   attackRange: 0.5
-  attackDamage: 25
+  attackDamage: 6
   postBreakpoint: 25
   maxPost: 100
   isDown: 0

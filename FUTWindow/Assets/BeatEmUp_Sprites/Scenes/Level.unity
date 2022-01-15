@@ -2237,6 +2237,8 @@ MonoBehaviour:
   SpawnPoints:
   - {fileID: 196480181}
   - {fileID: 1371354157}
+  - {fileID: 1414648744}
+  - {fileID: 1657958776}
   waveText: {fileID: 458009010}
   waveCompletedText: {fileID: 873961834}
   waveWord: {fileID: 1569490378}
@@ -2462,7 +2464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138169177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -4.6724, z: 1.2}
+  m_LocalPosition: {x: 0.3, y: -5.55, z: 1.2}
   m_LocalScale: {x: 20.69022, y: 1.1210419, z: 1}
   m_Children: []
   m_Father: {fileID: 1443002223}
@@ -2554,9 +2556,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138487519}
+  - component: {fileID: 1138487520}
   m_Layer: 7
   m_Name: Grab Detect
-  m_TagString: Untagged
+  m_TagString: FoodGrab
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2575,6 +2578,32 @@ Transform:
   m_Father: {fileID: 1464456916}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1138487520
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138487518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.09, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 0.31}
+  m_EdgeRadius: 0
 --- !u!1 &1173861085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,6 +2983,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1414648743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414648744}
+  m_Layer: 0
+  m_Name: SpawnPoint 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414648744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414648743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.75, y: 0.29, z: -1.5613534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432458786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,10 +3212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
+  currentHP: 0
   animator: {fileID: 123487791}
   attackPoint: {fileID: 1740210653}
-  jabDamage: 114
+  jabDamage: 5
   uppercutDamage: 2
+  hookDamage: 15
+  lowkickDamage: 15
+  pushkickDamage: 15
   attackRange: 0.24
   enemyLayers:
     serializedVersion: 2
@@ -3170,7 +3233,7 @@ MonoBehaviour:
   blockReducer: 0.76
   isDead: 0
   jabCooldown: 0.3
-  hookCooldown: 0.5
+  hookCooldown: 0.65
   uppercutCooldown: 5
   lowkickCooldown: 2
   pushkickCooldown: 4
@@ -3302,6 +3365,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 174748, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 194226, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3312,7 +3379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468752, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.04
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 468752, guid: af79ce6f80d046a4e872df2c64b4fa72, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3784,6 +3851,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a39502dfbf81bc41a3705a07f89e1ce, type: 3}
+--- !u!1 &1657958775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1657958776}
+  m_Layer: 0
+  m_Name: SpawnPoint 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1657958776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657958775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.52, y: 3.52, z: -1.5613534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676065419
 GameObject:
   m_ObjectHideFlags: 0

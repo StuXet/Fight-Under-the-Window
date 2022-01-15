@@ -10,6 +10,9 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     public int jabDamage = 3;
     public int uppercutDamage = 15;
+    public int hookDamage = 15;
+    public int lowkickDamage = 15;
+    public int pushkickDamage = 15;
     public float attackRange = .5f;
     public LayerMask enemyLayers;
     public PlayerController playerController;
@@ -42,6 +45,10 @@ public class PlayerCombat : MonoBehaviour
         healthBar.SetHealth(currentHP, maxHP);
         StartAttackTimer();
         CooldownsTimer();
+        if (currentHP >= maxHP)
+        {
+            currentHP = maxHP;
+        }
     }
     public void Jab()
     { 
@@ -62,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
            foreach (var enemy in hitEnemies)
            {
-               enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "Hook");
+               enemy.GetComponent<EnemyCombat>().TakeDamage(hookDamage, "Hook");
                Debug.Log("HIT " + enemy.name);
            }
            hookCooldownTimer = 0;
@@ -78,7 +85,7 @@ public class PlayerCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (var enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "LowKick");
+                enemy.GetComponent<EnemyCombat>().TakeDamage(lowkickDamage, "LowKick");
                 Debug.Log("HIT " + enemy.name);
             }
             lowkickCooldownTimer = 0;
@@ -89,7 +96,7 @@ public class PlayerCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (var enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyCombat>().TakeDamage(jabDamage, "PushKick");
+                enemy.GetComponent<EnemyCombat>().TakeDamage(pushkickDamage, "PushKick");
                 Debug.Log("HIT " + enemy.name);
             }
             pushkickCooldownTimer = 0;
