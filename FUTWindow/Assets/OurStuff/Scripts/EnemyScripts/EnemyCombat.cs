@@ -13,7 +13,6 @@ public class EnemyCombat : MonoBehaviour
     public PostBar postBar;
     public GameObject player;
     public GameObject floatingPoints;
-    public GameObject enemyDrops;
     public int enemyEXP;
     public float attackRange = 5f;
     public int attackDamage;
@@ -179,11 +178,6 @@ public class EnemyCombat : MonoBehaviour
             Invoke("GetAlphaBack", 3.9f);
             //destroy enemy for wavespawn system
             Destroy(gameObject, 4);
-            int randomDrop = UnityEngine.Random.Range(1, 7);
-            if (randomDrop == 4)
-            {
-                Instantiate(enemyDrops, this.transform.position, Quaternion.identity);
-            }
         }
     }
 
@@ -273,4 +267,5 @@ public class EnemyCombat : MonoBehaviour
         sr.color = new Color(1f, 1f, 1f, 1f);
     }
 
+    
 }
