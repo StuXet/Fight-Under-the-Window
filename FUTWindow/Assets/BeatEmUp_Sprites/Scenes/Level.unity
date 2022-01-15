@@ -2233,7 +2233,7 @@ MonoBehaviour:
     rate: 1
   - name: Wave 4
     enemy: {fileID: 8028611659413193281, guid: 42ba959a4ab6b9949917101a92a9f759, type: 3}
-    count: 4
+    count: 6
     rate: 1
   SpawnPoints:
   - {fileID: 196480181}
