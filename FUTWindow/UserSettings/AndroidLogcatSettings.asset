@@ -12,6 +12,12 @@
             "deviceId": "45f1737c",
             "name": "com.unity3d.mobileremote",
             "processId": 21184,
+            "exited": true
+        },
+        {
+            "deviceId": "45f1737c",
+            "name": "com.mi.android.globallauncher",
+            "processId": 3092,
             "exited": false
         }
     ],

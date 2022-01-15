@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.Counting;
     public bool isGamePaused;
-    public GameObject restartButton, quitButton, jab, uppercut, kick, block, startButton, pauseButton, gameOverImg;
+    public GameObject restartButton, quitButton, jab, uppercut, kick, block, pauseButton, gameOverImg;
 
     void Start()
     {
@@ -202,7 +202,6 @@ public class WaveSpawner : MonoBehaviour
         restartButton.SetActive(true);
         quitButton.SetActive(true);
         gameOverImg.SetActive(true);
-        startButton.SetActive(false);
         pauseButton.SetActive(false);
         jab.SetActive(false);
         kick.SetActive(false);

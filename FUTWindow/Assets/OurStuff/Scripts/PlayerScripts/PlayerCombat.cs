@@ -147,11 +147,11 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("IsBlocking", false);
             isBlocking = false;
-            //playerController.movementSpeed = playerSpeed;
+            playerController.movementSpeed = playerSpeed;
         }
         else
         {
-            //playerController.movementSpeed = 0;
+            playerController.movementSpeed = 0;
             animator.SetBool("IsBlocking", true);
             isBlocking = true;
         }

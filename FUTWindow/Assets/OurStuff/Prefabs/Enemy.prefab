@@ -1058,7 +1058,7 @@ MonoBehaviour:
   postBreakpoint: 25
   maxPost: 100
   isDown: 0
-  maxHP: 100
+  maxHP: 35
   isKnockBack: 0
 --- !u!61 &8028611658396639358
 BoxCollider2D:
