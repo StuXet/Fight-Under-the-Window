@@ -187,6 +187,7 @@ public class WaveSpawner : MonoBehaviour
     }
     public void RestartBottun()
     {
+        ScoreScript.scoreValue = 0;
         SceneManager.LoadScene("Level");
     }
     public void QuitBottun()

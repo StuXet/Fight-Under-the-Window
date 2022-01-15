@@ -107,7 +107,6 @@ public class EnemyCombat : MonoBehaviour
                 }
             case "Hook":
                 {
-                    Damage = Damage;
                     FloatingDamage(Damage);
                     currentHP -= Damage;
                     currentPost -= 5;
