@@ -35,17 +35,15 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.Counting;
     public bool isGamePaused;
-    public bool isPlayerDead = false;
     public GameObject restartButton, quitButton, jab, uppercut, kick, block, startButton, pauseButton, gameOverImg;
 
     void Start()
     {
-        SoundManagerScript.PlaySound("BCS2");
-        //waveCountdown = timeBetweenWaves;
 
         timeBetweenWaves = waveCountdown;
+        PauseGame();
+        SoundManagerScript.PlaySound("BCS1");
 
-        StartMenu();    
     }
 
      void Update()
@@ -80,10 +78,6 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        if (isPlayerDead)
-        {
-            GameOver();
-        }
         HandleWaveText();
         CheckPauseButton();
     }
@@ -201,27 +195,6 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Quiting Game!");
     }
 
-    void StartMenu()
-    {
-        Time.timeScale = 0;
-        isGamePaused = true;
-    }
-
-    public void StartButtonFunc()
-    {
-        SoundManagerScript.PlaySound("SRV");
-        Debug.Log("unpuased");
-        Time.timeScale = 1;
-        isGamePaused = false;
-        restartButton.SetActive(false);
-        quitButton.SetActive(false);
-        startButton.SetActive(false);
-        pauseButton.SetActive(true);
-        jab.SetActive(true);
-        kick.SetActive(true);
-        uppercut.SetActive(true);
-        block.SetActive(true);
-    }
 
     public void GameOver()
     {
@@ -231,6 +204,14 @@ public class WaveSpawner : MonoBehaviour
         gameOverImg.SetActive(true);
         startButton.SetActive(false);
         pauseButton.SetActive(false);
+        jab.SetActive(false);
+        kick.SetActive(false);
+        uppercut.SetActive(false);
+        block.SetActive(false);
+    }
+
+    public void TurnOffAttackButtons() 
+    {
         jab.SetActive(false);
         kick.SetActive(false);
         uppercut.SetActive(false);

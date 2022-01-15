@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public int maxHP = 100;
-    int currentHP;
+    public int currentHP;
     public Animator animator;
     public Transform attackPoint;
     public int jabDamage = 3;
     public int uppercutDamage = 15;
     public float attackRange = .5f;
     public LayerMask enemyLayers;
+    public PlayerController playerController;
     public PlayerHpBar healthBar;
     public Transform grabDetect;
     public Transform boxHolder;
@@ -22,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
     public bool isDead = false;
     bool isBlocking = false;
     float chargeAttackTimer;
-    float jabCooldownTimer, hookCooldownTimer, uppercutCooldownTimer, lowkickCooldownTimer, pushkickCooldownTimer;
+    float jabCooldownTimer, hookCooldownTimer, uppercutCooldownTimer, lowkickCooldownTimer, pushkickCooldownTimer, playerSpeed;
     public float jabCooldown, hookCooldown, uppercutCooldown, lowkickCooldown, pushkickCooldown;
     bool runAttackTimer = false;
 
@@ -33,6 +34,7 @@ public class PlayerCombat : MonoBehaviour
         currentHP = maxHP;
         healthBar.SetHealth(currentHP, maxHP);
         SetCooldownTimers();
+        playerSpeed = playerController.movementSpeed;
     }
 
     private void Update()
@@ -138,9 +140,11 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("IsBlocking", false);
             isBlocking = false;
+            //playerController.movementSpeed = playerSpeed;
         }
         else
         {
+            //playerController.movementSpeed = 0;
             animator.SetBool("IsBlocking", true);
             isBlocking = true;
         }
@@ -178,9 +182,9 @@ public class PlayerCombat : MonoBehaviour
         animator.SetBool("IsDead", true);
         isDead = true;
         GetComponent<PlayerController>().enabled = false;
+        TurnButtonsOff();
         Invoke("EndGame", 1.5f);
         Invoke("SetTimeToZero", 2f);
-        wS.isPlayerDead = true;
         this.enabled = false;
         SoundManagerScript.PlaySound("Dead2");
     }
@@ -221,4 +225,8 @@ public class PlayerCombat : MonoBehaviour
         wS.GameOver();
     }
 
+    void TurnButtonsOff()
+    {
+        wS.TurnOffAttackButtons();
+    }
 }
