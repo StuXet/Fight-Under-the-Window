@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
     public PlayerHpBar healthBar;
     public Transform grabDetect;
     public Transform boxHolder;
+    public WaveSpawner wS;
     public float rayDist;
     [Range(0f, 1f)]
     public float blockReducer;
@@ -175,7 +176,10 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Player Died!");
         animator.SetBool("IsDead", true);
         isDead = true;
-        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+        Invoke("EndGame", 1.5f);
+        Invoke("SetTimeToZero", 2f);
+        wS.isPlayerDead = true;
         this.enabled = false;
     }
 
@@ -203,6 +207,16 @@ public class PlayerCombat : MonoBehaviour
         uppercutCooldownTimer = uppercutCooldown;
         lowkickCooldownTimer = lowkickCooldown;
         pushkickCooldownTimer = pushkickCooldown;
+    }
+
+    void SetTimeToZero()
+    {
+        Time.timeScale = 0;
+    }
+
+    void EndGame()
+    {
+        wS.GameOver();
     }
 
 }

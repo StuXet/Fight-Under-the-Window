@@ -1053,7 +1053,7 @@ MonoBehaviour:
   floatingPoints: {fileID: 5634288527128820250, guid: 67fe8dccb48df294bb41fed892ef999a, type: 3}
   enemyEXP: 1
   attackRange: 0.5
-  attackDamage: 0
+  attackDamage: 25
   postBreakpoint: 25
   maxPost: 100
   isDown: 0
