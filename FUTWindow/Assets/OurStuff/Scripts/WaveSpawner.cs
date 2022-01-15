@@ -40,11 +40,12 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        SoundManagerScript.PlaySound("BCS1");
         //waveCountdown = timeBetweenWaves;
 
         timeBetweenWaves = waveCountdown;
-        StartMenu();    
 
+        StartMenu();    
     }
 
      void Update()
@@ -208,7 +209,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void StartButtonFunc()
     {
-        SoundManagerScript.PlaySound("BCS1");
+        SoundManagerScript.PlaySound("SRV");
         Debug.Log("unpuased");
         Time.timeScale = 1;
         isGamePaused = false;

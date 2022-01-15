@@ -169,6 +169,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Die();
         }
+        SoundManagerScript.PlaySound("Punch");
     }
     void Die()
     {
@@ -181,6 +182,7 @@ public class PlayerCombat : MonoBehaviour
         Invoke("SetTimeToZero", 2f);
         wS.isPlayerDead = true;
         this.enabled = false;
+        SoundManagerScript.PlaySound("Dead2");
     }
 
     void StartAttackTimer()

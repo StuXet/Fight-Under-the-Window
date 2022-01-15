@@ -25,7 +25,7 @@ public class EnemyCombat : MonoBehaviour
     int currentHP;
     bool isDead = false;
     public bool isKnockBack;
-
+    
     void Start()
     {
         currentHP = maxHP;
@@ -208,6 +208,8 @@ public class EnemyCombat : MonoBehaviour
         GetComponentInChildren<Canvas>().enabled = false;
         isDead = true;
         this.enabled = false;
+        SoundManagerScript.PlaySound("Dead3");
+
     }
 
     IEnumerator Cooldown()
@@ -264,4 +266,6 @@ public class EnemyCombat : MonoBehaviour
         //enemy flashing before death
         sr.color = new Color(1f, 1f, 1f, 1f);
     }
+
+    
 }
