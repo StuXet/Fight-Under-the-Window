@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
-
     public LayerMask playerLayers;
     public Transform attackPoint;
     public Animator animator;
@@ -78,6 +77,7 @@ public class EnemyCombat : MonoBehaviour
                     currentHP -= Damage;
                     currentPost -= 20;
                     animator.SetTrigger("Hurt");
+                    SoundManagerScript.PlaySound("Punch");
                     break;
                 }
             case "Uppercut":
@@ -100,6 +100,7 @@ public class EnemyCombat : MonoBehaviour
                     {
                      animator.SetTrigger("Hurt");
                     }
+                    SoundManagerScript.PlaySound("Upper");
                     break;
                 }
             case "Hook":
@@ -109,6 +110,7 @@ public class EnemyCombat : MonoBehaviour
                     currentHP -= Damage;
                     currentPost -= 5;
                     animator.SetTrigger("Hurt");
+                    SoundManagerScript.PlaySound("Punch");
                     break;
                 }
             case "PushKick":
@@ -143,6 +145,7 @@ public class EnemyCombat : MonoBehaviour
                     {
                         animator.SetTrigger("Hurt");
                     }
+                    SoundManagerScript.PlaySound("LegKick");
                     break;
                 }
             case "LowKick":
@@ -152,6 +155,7 @@ public class EnemyCombat : MonoBehaviour
                     currentPost -= 25;
                     enemyAI.speed = enemyAI.speed * 0.95f;
                     animator.SetTrigger("HitKick");
+                    SoundManagerScript.PlaySound("LegKick");
                     break;
                 }
             default:
