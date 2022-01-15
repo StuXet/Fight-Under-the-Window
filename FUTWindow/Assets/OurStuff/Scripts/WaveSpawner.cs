@@ -35,14 +35,14 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.Counting;
     public bool isGamePaused;
-    public GameObject restartButton, quitButton, jab, uppercut, kick, block;
+    public GameObject restartButton, quitButton, jab, uppercut, kick, block, startButton, pauseButton;
 
     void Start()
     {
         //waveCountdown = timeBetweenWaves;
 
         timeBetweenWaves = waveCountdown;
-        PauseGame();
+        StartMenu();    
 
     }
 
@@ -194,5 +194,24 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Quiting Game!");
     }
 
-    
+    void StartMenu()
+    {
+        Time.timeScale = 0;
+        isGamePaused = true;
+    }
+
+    public void StartButtonFunc()
+    {
+        Debug.Log("unpuased");
+        Time.timeScale = 1;
+        isGamePaused = false;
+        restartButton.SetActive(false);
+        quitButton.SetActive(false);
+        startButton.SetActive(false);
+        pauseButton.SetActive(true);
+        jab.SetActive(true);
+        kick.SetActive(true);
+        uppercut.SetActive(true);
+        block.SetActive(true);
+    }
 }
