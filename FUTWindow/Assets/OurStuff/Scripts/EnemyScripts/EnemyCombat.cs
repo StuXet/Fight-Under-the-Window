@@ -13,6 +13,7 @@ public class EnemyCombat : MonoBehaviour
     public PostBar postBar;
     public GameObject player;
     public GameObject floatingPoints;
+    public int enemyEXP;
     public float attackRange = 5f;
     public int attackDamage;
     public float postBreakpoint = 25;
@@ -164,6 +165,7 @@ public class EnemyCombat : MonoBehaviour
         
         if (currentHP <= 0)
         {
+            ScoreScript.scoreValue += enemyEXP;
             Die();
             //enemy flashing before death
             Invoke("GetNoAlpha", 3.2f);
