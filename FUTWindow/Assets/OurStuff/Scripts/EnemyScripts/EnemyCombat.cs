@@ -77,14 +77,14 @@ public class EnemyCombat : MonoBehaviour
                 {
                     FloatingDamage(Damage);
                     currentHP -= Damage;
-                    currentPost -= 20;
+                    currentPost -= 40;
                     animator.SetTrigger("Hurt");
                     SoundManagerScript.PlaySound("Punch");
                     break;
                 }
             case "Uppercut":
                 {
-                    Damage = Damage + (50 / (currentPost + 1));
+                    Damage = Damage + (150 / (currentPost + 1));
                     FloatingDamage(Damage);
                     currentHP -= Damage;
                     if (currentPost <= maxPost * 0.25 && currentHP > 0)
@@ -153,7 +153,7 @@ public class EnemyCombat : MonoBehaviour
                 {
                     FloatingDamage(Damage);
                     currentHP -= Damage;
-                    currentPost -= 25;
+                    currentPost -= 100;
                     enemyAI.speed = enemyAI.speed * 0.95f;
                     animator.SetTrigger("HitKick");
                     SoundManagerScript.PlaySound("LegKick");
@@ -177,8 +177,8 @@ public class EnemyCombat : MonoBehaviour
             Invoke("GetNoAlpha", 3.8f);
             Invoke("GetAlphaBack", 3.9f);
             //destroy enemy for wavespawn system
-            int randomDrop = UnityEngine.Random.Range(1, 7);
-            if (randomDrop == 4)
+            int randomDrop = UnityEngine.Random.Range(1, 4);
+            if (randomDrop == 3)
             {
                 Instantiate(enemyDrops, this.transform.position, Quaternion.identity);
             }

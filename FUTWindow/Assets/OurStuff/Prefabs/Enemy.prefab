@@ -1054,11 +1054,11 @@ MonoBehaviour:
   enemyDrops: {fileID: 105114, guid: 0c81f107079bedc4a93944b7d4ce4a5d, type: 3}
   enemyEXP: 1
   attackRange: 0.5
-  attackDamage: 6
+  attackDamage: 4
   postBreakpoint: 25
   maxPost: 100
   isDown: 0
-  maxHP: 35
+  maxHP: 50
   isKnockBack: 0
 --- !u!61 &8028611658396639358
 BoxCollider2D:
@@ -1073,7 +1073,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10767293, y: 1.8083632}
+  m_Offset: {x: 0.23692167, y: 1.7391479}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1084,7 +1084,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5597682, y: 0.4908991}
+  m_Size: {x: 0.5459249, y: 0.82313204}
   m_EdgeRadius: 0
 --- !u!212 &8028611658396639359
 SpriteRenderer:
