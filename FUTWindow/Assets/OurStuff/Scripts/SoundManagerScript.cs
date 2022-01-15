@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip hook, uppercut, lowKick, backGroundSound, dead1, dead2, dead3, startVoice;
+    public static AudioClip hook, uppercut, lowKick, bCS1, bCS2, dead1, dead2, dead3, startVoice;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -13,7 +13,8 @@ public class SoundManagerScript : MonoBehaviour
         uppercut = Resources.Load<AudioClip>("Upper");
         lowKick = Resources.Load<AudioClip>("LegKick");
         hook = Resources.Load<AudioClip>("Punch");
-        backGroundSound = Resources.Load<AudioClip>("BCS1");
+        bCS1 = Resources.Load<AudioClip>("BCS1");
+        bCS2 = Resources.Load<AudioClip>("BCS2");
         dead1 = Resources.Load<AudioClip>("Dead1");
         dead2 = Resources.Load<AudioClip>("Dead2");
         dead3 = Resources.Load<AudioClip>("Dead3");
@@ -42,7 +43,10 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(hook);
                 break;
                 case "BCS1":
-                audioSrc.PlayOneShot(backGroundSound);
+                audioSrc.PlayOneShot(bCS1);
+                break;
+            case "BCS2":
+                audioSrc.PlayOneShot(bCS2);
                 break;
                 case "Dead1":
                 audioSrc.PlayOneShot(dead1);

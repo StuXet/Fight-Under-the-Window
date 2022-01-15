@@ -40,7 +40,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        SoundManagerScript.PlaySound("BCS1");
+        SoundManagerScript.PlaySound("BCS2");
         //waveCountdown = timeBetweenWaves;
 
         timeBetweenWaves = waveCountdown;
