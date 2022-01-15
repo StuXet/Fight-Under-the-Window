@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public int maxHP = 100;
-    int currentHP;
+    public int currentHP;
     public Animator animator;
     public Transform attackPoint;
     public int jabDamage = 3;
@@ -220,5 +220,4 @@ public class PlayerCombat : MonoBehaviour
     {
         wS.GameOver();
     }
-
 }

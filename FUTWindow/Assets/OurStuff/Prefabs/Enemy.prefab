@@ -1051,6 +1051,7 @@ MonoBehaviour:
   postBar: {fileID: 3564939016942635467}
   player: {fileID: 0}
   floatingPoints: {fileID: 5634288527128820250, guid: 67fe8dccb48df294bb41fed892ef999a, type: 3}
+  enemyDrops: {fileID: 105114, guid: 0c81f107079bedc4a93944b7d4ce4a5d, type: 3}
   enemyEXP: 1
   attackRange: 0.5
   attackDamage: 25
