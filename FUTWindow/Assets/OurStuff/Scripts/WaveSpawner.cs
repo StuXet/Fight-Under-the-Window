@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-
+        SoundManagerScript.PlaySound("SRV");
         timeBetweenWaves = waveCountdown;
         PauseGame();
     }
