@@ -2,7 +2,7 @@
 # Fight Under the Window
 is a classic beat-em-up game with a pixelated art style
 
-This DEMO was submitted as an Advance Unity course,
+This DEMO was submitted as a game for android final project in the Unity Advance course
 
 # Setup 
 Our game takes place under the window of someone who sees how one guy fight with a bunch of bandits
